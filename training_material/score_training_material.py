@@ -8,7 +8,9 @@ from sigcad_requests.constants.UrlConstants import UrlConstants
 url = f"{BASE_URL}/{UrlConstants.SCORE_TRAINING_MATERIAL_ENDPOINT}"
 
 
-def score_training_material(token: str, training_material_id: str, comment: str, score: int) -> Response:
+def score_training_material(
+    token: str, training_material_id: str, comment: str, score: int
+) -> Response:
     return requests.post(
         url,
         {

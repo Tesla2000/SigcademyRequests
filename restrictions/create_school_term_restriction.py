@@ -10,8 +10,14 @@ from sigcad_requests.constants.UrlConstants import UrlConstants
 url = f"{BASE_URL}/{UrlConstants.CREATE_SCHOOL_RESTRICTION_TERM_ENDPOINT}"
 
 
-def create_school_term_restriction(token: str, school_id: str, lesson_id: str, dt: datetime, duration: int,
-                                   weekly_repetition: bool) -> Response:
+def create_school_term_restriction(
+    token: str,
+    school_id: str,
+    lesson_id: str,
+    dt: datetime,
+    duration: int,
+    weekly_repetition: bool,
+) -> Response:
     date = dt.date().strftime("%d-%m-%y")
     time = dt.time().strftime("%H:%M")
     data = {

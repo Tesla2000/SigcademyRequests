@@ -10,7 +10,16 @@ from sigcad_requests.constants.UrlConstants import UrlConstants
 url = f"{BASE_URL}/{UrlConstants.CREATE_LESSON_ENDPOINT}"
 
 
-def create_lesson(token: str, lesson_name: str, description: str, video_url: str, questions: list[str] = None, answers: list[str] = None, generator_path: Path = None, html_path: Path = None) -> Response:
+def create_lesson(
+    token: str,
+    lesson_name: str,
+    description: str,
+    video_url: str,
+    questions: list[str] = None,
+    answers: list[str] = None,
+    generator_path: Path = None,
+    html_path: Path = None,
+) -> Response:
     if not (questions and answers) and not generator_path:
         raise ValueError("Either question-answer pairs or generator must be provided")
     html = html_path.open() if html_path else None
@@ -30,20 +39,19 @@ def create_lesson(token: str, lesson_name: str, description: str, video_url: str
             FrontendConstants.GENERATOR: (
                 generator_path.name,
                 generator,
-            ) if generator_path else None,
+            )
+            if generator_path
+            else None,
             FrontendConstants.HTML: (
                 html_path.name,
                 html,
-            ) if html_path else None,
+            )
+            if html_path
+            else None,
         }
-    response = requests.post(
-        url,
-        data,
-        files=files
-    )
+    response = requests.post(url, data, files=files)
     if html:
         html.close()
     if generator:
         generator.close()
     return response
-

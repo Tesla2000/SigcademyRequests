@@ -12,7 +12,7 @@ def remove_school_restriction(token: str, school_id: str, lesson_id: str) -> Res
     data = {
         FrontendConstants.USER_TOKEN: token,
         FrontendConstants.SCHOOL_NAME: school_id,
-        FrontendConstants.LESSON_NAME: lesson_id
+        FrontendConstants.LESSON_NAME: lesson_id,
     }
     return requests.post(
         url,

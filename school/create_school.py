@@ -8,7 +8,4 @@ url = f"{BASE_URL}/{UrlConstants.CREATE_SCHOOL_ENDPOINT}"
 
 
 def create_school(token: str, school_name: str) -> Response:
-    return requests.post(url, {
-        "token": token,
-        "school_name": school_name
-    })
+    return requests.post(url, {"token": token, "school_name": school_name})
