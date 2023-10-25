@@ -6,8 +6,8 @@ import requests
 from requests import Response
 
 from settings import BASE_URL
-from sigcad_requests.constants.FrontendConstants import FrontendConstants
-from sigcad_requests.constants.UrlConstants import UrlConstants
+from constants.FrontendConstants import FrontendConstants
+from constants.UrlConstants import UrlConstants
 
 url = f"{BASE_URL}/{UrlConstants.CREATE_TRAINING_MATERIAL_ENDPOINT}"
 
@@ -23,6 +23,10 @@ def create_training_material(
     generator_paths: list[Path] = None,
     html_paths: list[Path] = None,
 ) -> Response:
+    question_sets = question_sets or []
+    answer_sets = answer_sets or []
+    generator_paths = generator_paths or []
+    html_paths = html_paths or []
     data = {
         FrontendConstants.LESSON_NAME: lesson_id,
         FrontendConstants.TRAINING_MATERIAL_NAME: training_material_name,

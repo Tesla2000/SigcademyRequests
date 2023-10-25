@@ -2,8 +2,8 @@ import requests
 from requests import Response
 
 from settings import BASE_URL
-from sigcad_requests.constants.FrontendConstants import FrontendConstants
-from sigcad_requests.constants.UrlConstants import UrlConstants
+from constants.FrontendConstants import FrontendConstants
+from constants.UrlConstants import UrlConstants
 
 url = f"{BASE_URL}/{UrlConstants.GET_USER_ENDPOINT}"
 
